@@ -2,8 +2,27 @@ const express = require('express');
 const app = express();
 
 const port = 3000;
+//Loengud
+const courses = [
+  {
+    id: 1,
+    name: 'Programmeerimine II'
+  },
+  {
+    id: 2,
+    name: 'Multimeedium'
+  },
+  {
+    id: 3,
+    name: 'Kujundusgraafika'
+  },
+  {
+    id: 4,
+    name: 'Veebiraamistikud'
+  },
+];
 
-//Õpetajate andmed
+//Õpetajad
 const teachers = [
   {
     id: 1,
@@ -23,7 +42,7 @@ const teachers = [
   },
 ];
 
-//Ruumide andmed
+//Ruumid
 const rooms = [
   {
     id: 1,
@@ -48,7 +67,56 @@ app.use(express.json());
 app.get('/hello', (req, res) => {
   res.status(200).json({message: 'Hello world!'});
 });
-/////Teacher
+
+/////Loengud
+app.get('/courses', (req, res) => {
+  res.status(200).json({
+    courses: courses
+  });
+});
+
+app.get('/courses/:id', (req, res) => {
+  const key = req.query.key;
+  const id = req.params.id;
+  const room = courses[id - 1];
+  res.status(200).json({
+    course: course
+  });
+});
+
+app.post('/courses', (req, res) => {
+  const name = req.body.name;
+  if (name) {
+    const course = {
+      id: courses.length + 1,
+      name: name
+    };
+    courses.push(course);
+    res.status(201).json({
+      id: course.id
+    });
+  } else {
+    res.status(400).json({
+      error: 'Description is missing'
+    });
+  }
+});
+
+app.delete('/courses/:id', (req, res) => {
+  const id = req.params.id;
+  courses.splice(id - 1, 1);
+  res.status(200).end();
+});
+
+app.patch('/courses/:id', (req, res) => {
+  const id = req.params.id;
+  const name = req.body.name;
+  courses[id - 1].name = name;
+  res.status(200).json({
+    success: true
+  });
+});
+/////Õpetajad
 app.get('/teachers', (req, res) => {
   res.status(200).json({
     teachers: teachers
@@ -96,7 +164,7 @@ app.patch('/teachers/:id', (req, res) => {
     success: true
   });
 });
-/////Rooms
+/////Ruumid
 app.get('/rooms', (req, res) => {
   res.status(200).json({
     rooms: rooms
