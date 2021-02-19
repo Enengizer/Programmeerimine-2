@@ -2,7 +2,38 @@ const express = require('express');
 const app = express();
 
 const port = 3000;
-//Loengud
+//Päevad
+const days = [
+  {
+    id: 1,
+    name: 'Esmaspäev'
+  },
+  {
+    id: 2,
+    name: 'Teisipäev'
+  },
+  {
+    id: 3,
+    name: 'Kolmapäev'
+  },
+  {
+    id: 4,
+    name: 'Neljapäev'
+  },
+  {
+    id: 5,
+    name: 'Reede'
+  },
+  {
+    id: 6,
+    name: 'Laupäev'
+  },
+  {
+    id: 7,
+    name: 'Pühapäev'
+  },
+];
+//Ained
 const courses = [
   {
     id: 1,
@@ -68,7 +99,55 @@ app.get('/hello', (req, res) => {
   res.status(200).json({message: 'Hello world!'});
 });
 
-/////Loengud
+//Päevad
+app.get('/days', (req, res) => {
+  res.status(200).json({
+    days: days
+  });
+});
+
+app.get('/days/:id', (req, res) => {
+  const key = req.query.key;
+  const id = req.params.id;
+  const room = days[id - 1];
+  res.status(200).json({
+    day: day
+  });
+});
+
+app.post('/days', (req, res) => {
+  const name = req.body.name;
+  if (name) {
+    const day = {
+      id: days.length + 1,
+      name: name
+    };
+    days.push(day);
+    res.status(201).json({
+      id: day.id
+    });
+  } else {
+    res.status(400).json({
+      error: 'Description is missing'
+    });
+  }
+});
+
+app.delete('/days/:id', (req, res) => {
+  const id = req.params.id;
+  days.splice(id - 1, 1);
+  res.status(200).end();
+});
+
+app.patch('/days/:id', (req, res) => {
+  const id = req.params.id;
+  const name = req.body.name;
+  days[id - 1].name = name;
+  res.status(200).json({
+    success: true
+  });
+});
+/////Ained
 app.get('/courses', (req, res) => {
   res.status(200).json({
     courses: courses
