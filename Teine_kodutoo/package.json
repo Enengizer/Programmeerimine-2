@@ -1,0 +1,29 @@
+{
+  "name": "Programmeerimine-2",
+  "version": "1.0.0",
+  "description": "## Endpoindid ### Kursused: * GET /courses   * Tagastab kursuste nimekirja * GET /courses/:id   * Tagastab kursuse määratud id-ga * POST /courses   * Loob uue kursuse   * Nõutud teacherById ja name request body-s * DELETE /courses/:id   * Kustutab määratud id-ga kursuse   ### Kasutajad: * GET /users   * Tagastab õpetajate nimekirja * GET /teachers/:id   * Tagastab õpetaja määratud id-ga * POST /teachers   * Loob uue õpetaja   * Nõutud firstName ja lastName request body-s * PATCH /teachers/:id   * Muudab määratud id-ga õpetaja   * Nõutud id parameetrina   * Nõutud firstName või lastName request body-s * DELETE /teachers/:id   * Kustutab määratud id-ga õpetaja ### Ruumid: * GET /rooms   * Tagastab ruumide nimekirja * GET /rooms/:id   * Tagastab ruumi määratud id-ga * POST /rooms   * Loob uue ruumi   * Nõutud description request body-s * PATCH /rooms/:id   * Muudab määratud id-ga ruumi   * Nõutud id parameetrina   * Nõutud description request body-s * DELETE /rooms/:id   * Kustutab määratud id-ga ruumi ### Päevad: * GET /days   * Tagastab päevade nimekirja * GET /days/:id   * Tagastab päeva määratud id-ga * POST /days   * Loob uue päeva   * Nõutud description request body-s * PATCH /days/:id   * Muudab määratud id-ga päeva   * Nõutud id parameetrina   * Nõutud description request body-s * DELETE /days/:id   * Kustutab määratud id-ga päeva",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Enengizer/Programmeerimine-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Enengizer/Programmeerimine-2/issues"
+  },
+  "homepage": "https://github.com/Enengizer/Programmeerimine-2/#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
