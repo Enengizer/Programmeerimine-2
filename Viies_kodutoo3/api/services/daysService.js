@@ -25,7 +25,7 @@ daysService.getdayById = async (id) => {
     C.id = ?`, [id],
   );
   if (!day) return false;
-  return day;
+  return day[0];
 };
 
 

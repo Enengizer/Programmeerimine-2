@@ -26,7 +26,7 @@ describe('Days service', function () {
     it('should return day object with keys', async function () {
       const day = await daysService.getdayById(existingDay.id);
       expect(day).to.be.a('object');
-      expect(day).to.have.keys(['id', 'nameofday', 'dateCreated', 'deleted', 'createdById']);
+      expect(day).to.have.keys(['id','nameofday']);
     });
   });
 });

@@ -91,7 +91,7 @@ coursesController.createcourse = async (req, res) => {
     });
   }
   return res.status(201).json({
-    id: course.id,
+    id: course.id[0],
   });
 };
 
